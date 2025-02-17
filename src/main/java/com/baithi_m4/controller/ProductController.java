@@ -40,4 +40,9 @@ public class ProductController {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/search")
+    public List<Product> searchProducts(@RequestParam("keyword") String keyword) {
+        return productService.searchProducts(keyword);
+    }
 }

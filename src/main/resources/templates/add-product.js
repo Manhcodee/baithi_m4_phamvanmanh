@@ -13,7 +13,7 @@ $(document).ready(function() {
         });
     }
 
-    // Hiển thị danh sách loại sản phẩm trong dropdown
+    // Hiển thị danh sách loại sản phẩm
     function populateCategories(categories) {
         var categorySelect = $("#category");
         categorySelect.empty();
@@ -23,10 +23,9 @@ $(document).ready(function() {
         });
     }
 
-    // Gọi hàm loadCategories khi trang được tải
     loadCategories();
 
-    // Xử lý sự kiện submit form thêm sản phẩm
+    // thêm sản phẩm
     $("#add-product-form").submit(function(event) {
         event.preventDefault();
 
@@ -44,7 +43,7 @@ $(document).ready(function() {
             data: JSON.stringify(product),
             success: function() {
                 alert("Thêm sản phẩm thành công!");
-                window.location.href = "index.html"; // Quay lại trang quản lý sản phẩm
+                window.location.href = "index.html";
             },
             error: function(error) {
                 console.error("Error adding product:", error);
@@ -54,6 +53,6 @@ $(document).ready(function() {
 
     // Xử lý sự kiện nút hủy
     $("#cancel").click(function() {
-        window.location.href = "index.html"; // Quay lại trang quản lý sản phẩm
+        window.location.href = "index.html";
     });
 });

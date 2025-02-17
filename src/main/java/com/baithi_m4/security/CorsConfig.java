@@ -13,10 +13,10 @@ public class CorsConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:63342"); // Nguồn gốc cho phép
-        config.addAllowedHeader("*"); // Cho phép tất cả headers
-        config.addAllowedMethod("*"); // Cho phép tất cả phương thức (GET, POST, PUT, DELETE,...)
-        source.registerCorsConfiguration("/**", config); // Đường dẫn cho phép CORS
+        config.addAllowedOrigin("http://localhost:63342");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
 }

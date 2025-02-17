@@ -15,7 +15,7 @@ $(document).ready(function() {
 
     function displayProducts(products) {
         var productTable = $("#product-list");
-        productTable.empty(); // Xóa các hàng cũ
+        productTable.empty();
 
         products.forEach(function(product, index) {
             var row = `
@@ -32,24 +32,34 @@ $(document).ready(function() {
             productTable.append(row);
         });
 
-        // Xử lý sự kiện nút sửa
+        // nút sửa
         $(".edit-btn").click(function() {
             var productId = $(this).data("id");
             window.location.href = `edit-product.html?id=${productId}`; // Điều hướng đến trang sửa sản phẩm với ID sản phẩm
         });
     }
 
-
-    // Gọi hàm loadProducts khi trang được tải
     loadProducts();
 
-    // Xử lý sự kiện nút tìm kiếm
+    // tìm kiếm
     $("#search-form").submit(function(event) {
         event.preventDefault();
-        // Thêm logic tìm kiếm ở đây
+
+        var keyword = $("#search-input").val();
+
+        $.ajax({
+            url: "http://localhost:8080/api/products/search?keyword=" + keyword,
+            method: "GET",
+            success: function(data) {
+                displayProducts(data);
+            },
+            error: function(error) {
+                console.error("Error searching products:", error);
+            }
+        });
     });
 
-    // Xử lý sự kiện nút xóa
+    //nút xóa
     $("#delete").click(function() {
         // Lấy danh sách sản phẩm đã chọn
         var selectedProducts = [];

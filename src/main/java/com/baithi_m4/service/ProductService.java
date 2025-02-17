@@ -27,4 +27,8 @@ public class ProductService {
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
     }
+
+    public List<Product> searchProducts(String keyword) {
+        return productRepository.findByNameContainingIgnoreCase(keyword); // Update here
+    }
 }
